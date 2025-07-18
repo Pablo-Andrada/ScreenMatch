@@ -32,7 +32,7 @@ public class Serie {
                 ", poster='" + poster + '\'' +
                 ", genero=" + genero +
                 ", actores='" + actores + '\'' +
-                ", sinopsis='" + sinopsis + '\'' +
+                ", sinopsis='" + sinopsis + '\''
              ;
     }
 
