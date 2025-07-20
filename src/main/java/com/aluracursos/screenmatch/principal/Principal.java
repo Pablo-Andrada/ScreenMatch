@@ -84,7 +84,7 @@ public class Principal {
         DatosSerie datos = getDatosSerie();
        Serie serie = new Serie(datos);
        repositorio.save(serie);
-        // datosSeries.add(datos);
+        //  datosSeries.add(datos);
         System.out.println(datos);
     }
 
