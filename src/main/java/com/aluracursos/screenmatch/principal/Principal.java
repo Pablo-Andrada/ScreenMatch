@@ -24,7 +24,7 @@ public class Principal {
     public Principal(SerieRepository repository) {
         this.repositorio = repository;
     }
-
+        //Menú de opciones
     public void muestraElMenu() {
         var opcion = -1;
         while (opcion != 0) {
