@@ -58,7 +58,7 @@ public class Principal {
         }
 
     }
-
+    // métodos correspondientes a cada case
     private DatosSerie getDatosSerie() {
         System.out.println("Escribe el nombre de la serie que deseas buscar");
         var nombreSerie = teclado.nextLine();
