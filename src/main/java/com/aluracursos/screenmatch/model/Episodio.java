@@ -9,6 +9,7 @@ public class Episodio {
     private Integer numeroEpisodio;
     private Double evaluacion;
     private LocalDate fechaDeLanzamiento;
+    private Serie serie;
 
     public Episodio(Integer numero, DatosEpisodio d) {
         this.temporada = numero;
@@ -25,6 +26,14 @@ public class Episodio {
             this.fechaDeLanzamiento = null;
         }
 
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
     }
 
     public Integer getTemporada() {
