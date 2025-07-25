@@ -11,7 +11,7 @@ import java.util.OptionalDouble;
 public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
     @Column(unique = true)
     private String titulo;
     private Integer totalTemporadas;
@@ -21,7 +21,7 @@ public class Serie {
     private Categoria genero;
     private String actores;
     private String sinopsis;
-    @OneToMany(mappedBy = "serie")
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
     private List<Episodio> episodios;
 
     public Serie (){}
@@ -49,12 +49,20 @@ public class Serie {
              ;
     }
 
+    public List<Episodio> getEpisodios() {
+        return episodios;
+    }
+
+    public void setEpisodios(List<Episodio> episodios) {
+        this.episodios = episodios;
+    }
+
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getTitulo() {
