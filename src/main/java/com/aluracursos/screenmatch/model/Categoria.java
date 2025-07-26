@@ -1,5 +1,7 @@
 package com.aluracursos.screenmatch.model;
 
+import java.text.Normalizer;
+
 public enum Categoria {
     ACCION("Action", "Acción"),
     ROMANCE("Romance", "Romance"),
@@ -9,26 +11,35 @@ public enum Categoria {
 
     private String categoriaOmdb;
     private String categoriaEspanol;
-    Categoria(String categoriaOmdb, String categoriaEspanol){
 
-        this.categoriaOmdb = categoriaOmdb;
+    Categoria(String categoriaOmdb, String categoriaEspanol){
+        this.categoriaOmdb   = categoriaOmdb;
         this.categoriaEspanol = categoriaEspanol;
     }
 
-    public static Categoria fromString(String text) {
-        for (Categoria categoria : Categoria.values()) {
-            if (categoria.categoriaOmdb.equalsIgnoreCase(text)) {
-                return categoria;
-            }
-        }
-        throw new IllegalArgumentException("Ninguna categoria encontrada: " + text);
+    private static String normalize(String s) {
+        // Descompone acentos y luego los elimina
+        String tmp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        return tmp.replaceAll("\\p{M}", "").toLowerCase();
     }
+
     public static Categoria fromEspanol(String text) {
-        for (Categoria categoria : Categoria.values()) {
-            if (categoria.categoriaEspanol.equalsIgnoreCase(text)) {
-                return categoria;
+        String buscado = normalize(text);
+        for (Categoria c : values()) {
+            if (normalize(c.categoriaEspanol).equals(buscado)) {
+                return c;
             }
         }
-        throw new IllegalArgumentException("Ninguna categoria encontrada: " + text);
+        throw new IllegalArgumentException("Ninguna categoría encontrada: " + text);
+    }
+
+    public static Categoria fromString(String text) {
+        String buscado = normalize(text);
+        for (Categoria c : values()) {
+            if (normalize(c.categoriaOmdb).equals(buscado)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException("Ninguna categoría OMDB encontrada: " + text);
     }
 }
