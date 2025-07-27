@@ -3,6 +3,7 @@ package com.aluracursos.screenmatch.controller;
 
 import com.aluracursos.screenmatch.dto.EpisodioDTO;
 import com.aluracursos.screenmatch.dto.SerieDTO;
+import com.aluracursos.screenmatch.dto.TemporadaDTO;
 import com.aluracursos.screenmatch.model.Serie;
 import com.aluracursos.screenmatch.repository.SerieRepository;
 import com.aluracursos.screenmatch.service.SerieService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -47,6 +49,7 @@ public class SerieController {
     public List<EpisodioDTO> obtenerTodasLasTemporadas(@PathVariable Long id) {
         return servicio.obtenerTodasLasTemporadas(id);
     }
+
 
     @GetMapping("/{id}/temporadas/{numeroTemporada}")
     public List<EpisodioDTO> obtenerTemporadasPorNumero(@PathVariable Long id,
